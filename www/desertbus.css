@@ -1,0 +1,138 @@
+body
+{
+    font-family: Montserrat, Ubuntu, Verdana, sans-serif;
+}
+
+header
+{
+    height: 5.5em;
+    background-color: rgb(255, 175, 37);
+    border-bottom: 1em solid rgb(74, 168, 183);
+    position: relative;
+    padding-left: calc(1em + 112px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 10em;
+}
+
+header img
+{
+    position: absolute;
+    height: 7em;
+    top: 0.5em;
+    left: 1em;
+}
+
+html, body
+{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+header div
+{
+    bottom: 0px;
+    text-align: center;
+}
+
+header div span
+{
+    font-size: 2.5em;
+}
+
+.cliquable
+{
+    cursor: pointer;
+}
+
+/* Partie Basse */
+.partieBas
+{
+    display: table;
+    width: 100%;
+    height: calc(100% - 5.5em - 1em);
+}
+
+.partieBasLigne
+{
+    display: table-row;
+}
+
+.partieBasCellule
+{
+    display: table-cell;
+    padding: 1em;
+}
+
+.partieBasCellule h2
+{
+    margin-top: 0px;
+}
+
+.partieBasCellule + .partieBasCellule
+{
+    border-left: 0.5em solid rgb(74, 168, 183);
+}
+
+#partieBasDons
+{
+    width: 75%;
+}
+
+#partieBasCompteurTemps
+{
+    /*width: 25%;*/
+}
+
+/* Compteur de temps */
+#timerListe
+{
+  list-style: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#timerListe li
+{
+    text-align: center;
+}
+
+#timerListe li span.timerCompteurNom
+{
+  font-size: 2em;
+}
+
+#timerListe li span.timerCompteurChrono
+{
+  font-size: 3em;
+}
+
+/* Affichage des dons */
+#listeDonFormulaire
+{
+    display:  inline-block;
+}
+
+#listeDon
+{
+    width: 100%;
+}
+
+#listeDon tr, #listeDon td, #listeDon th
+{
+	border:  1px solid black;
+	padding: 0.5em;
+}
+
+
+/* État compteur */
+#compteurEtatParagraphe
+{
+    float: right;
+    margin-top: 0.25em;
+    margin-bottom: 0px;
+}
