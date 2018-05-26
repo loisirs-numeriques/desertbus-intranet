@@ -1,0 +1,16 @@
+{
+  "name": "desertbus",
+  "version": "0.0.1",
+  "description": "Outils interne du Desert Bus",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "JonathanMM",
+  "license": "Propriétaire",
+  "dependencies": {
+    "electron": "^1.4.1",
+    "npm": "^6.1.0",
+    "websocket": "^1.0.23"
+  }
+}

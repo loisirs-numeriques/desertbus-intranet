@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Desert Bus</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="desertbus.css" />
+    </head>
+    <body>
+        <header>
+            <img src="logoDefinitif.png" alt="Desert Bus" />
+            <div style="margin-left: 2em;">
+                Total des dons<br />
+                <span id="totalDonMontant">- €</span>
+            </div>
+            <div>
+                Nombre de dons<br />
+                <span id="totalDonNb">-</span>
+            </div>
+            <div>
+                Total de l'heure<br />
+                <span id="totalDonHeureMontant">- €</span>
+            </div>
+            <div>
+                Dons de l'heure<br />
+                <span id="totalDonHeureNb">-</span>
+            </div>
+            <div>
+                Viewers<br />
+                <span id="totalViewers">-</span>
+            </div>
+        </header>
+
+        <div class="partieBas">
+            <div class="partieBasLigne">
+                <div class="partieBasCellule" id="partieBasDons">
+                    <p id="compteurEtatParagraphe">
+                        État du compteur : <span id="compteurEtat">Direct</span> -
+                        <a class="cliquable" id="compteurEtatAction" onclick="compteurEtatTrigger();">
+                            Bloquer
+                        </a>
+                    </p>
+                    <h2>Dons</h2>
+                    <button onclick="listeDonHeureCourante()">Heure courante</button>
+                    <form id="listeDonFormulaire" onsubmit="listeDonDemandeFormulaire(event)">
+                        <select id="listeDonDemandeIndex"></select>
+
+                        <input type="submit" value="Voir" />
+                    </form>
+                    Filtrer par montant : <select id="listeDonFiltre" onchange="listeDonMaj();"><option value="-1">Tous les montants</option></select> - <input id="listeDonFiltreTombola" onchange="listeDonMaj();" type="checkbox" /> Tirage au sort seulement
+                    <table id="listeDon"></table>
+
+                    <h3 class="cliquable" id="ajoutDonTitre" onclick="ajoutDonFormulaireTrigger()">Ajouter un don</h3>
+
+                    <form id="ajoutDonFormulaire" onsubmit="ajoutDonEnregistrerFormulaire(event)" style="display:none">
+                        <label for="ajoutDonMontant">Montant : </label><input id="ajoutDonMontant" name="montant" type="number" min="0" step="0.01" /><br />
+                        <label for="ajoutDonDate">Date : </label><input id="ajoutDonDate" name="date" type="datetime" /><br />
+                        <label for="ajoutDonNom">Nom : </label><input id="ajoutDonNom" /><br />
+                        <label for="ajoutDonPrenom">Prénom : </label><input id="ajoutDonPrenom" /><br />
+                        <label for="ajoutDonSociete">Société : </label><input id="ajoutDonSociete" /><br />
+                        <label for="ajoutDonAdresse">Adresse : </label><input id="ajoutDonAdresse" /><br />
+                        <label for="ajoutDonCP">Code Postal : </label><input id="ajoutDonCP" /><br />
+                        <label for="ajoutDonVille">Ville : </label><input id="ajoutDonVille" /><br />
+                        <label for="ajoutDonPays">Pays : </label><input id="ajoutDonPays" /><br />
+                        <label for="ajoutDonCourriel">Courriel : </label><input id="ajoutDonCourriel" type="email"/><br />
+                        <label for="ajoutDonCommentaire">Commentaire : </label><br />
+                        <textarea id="ajoutDonCommentaire"></textarea><br />
+                        <input type="hidden" id="ajoutDonId" value="0" />
+
+                        <input type="submit" value="Enregistrer" />
+                    </form>
+                </div>
+                <div class="partieBasCellule" id="partieBasCompteurTemps">
+                    <h2>Compteurs de temps</h2>
+                    <ul id="timerListe"></ul>
+
+                    <h3 class="cliquable" id="ajoutTimerTitre" onclick="ajoutTimerFormulaireTrigger()">Ajouter un compteur</h3>
+
+                    <form id="ajoutTimerFormulaire" style="display:none" onsubmit="ajoutTimerEnregistrerFormulaire(event)">
+                        <label for="ajoutTimerNom">Nom : </label><input id="ajoutTimerNom" name="nom" required /><br />
+                        <label for="ajoutTimerDebut">Début : </label><input id="ajoutTimerDebut" name="date" type="datetime" placeholder="AAAA-MM-JJ HH:MM:SS" /><br />
+                        <input id="ajoutTimerDemarrerImmediatement" type="checkbox" checked />
+                        <label for="ajoutTimerDemarrerImmediatement">
+                            Démarrer dès l'ajout
+                        </label><br />
+                        <input type="hidden" id="ajoutTimerId" value="0" />
+
+                        <input type="submit" value="Enregistrer" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script type="application/javascript" src="./wsTools.js"></script>
+        <script type="application/javascript" src="./index.js"></script>
+    </body>
+</html>
