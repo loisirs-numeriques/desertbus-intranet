@@ -19,23 +19,23 @@ function majDon(totalDon)
 	}
 
 	//On envoi aussi le compteur au site web !
-	mettreAJourCompteurSiteWeb(totalDon)
+	// mettreAJourCompteurSiteWeb(totalDon)
 }
 
-function mettreAJourCompteurSiteWeb(montant)
-{
-		let url = 'http://loisirsnumeriques.org/desertbus/compteur/envoiDonPourMettreAJourCompteur.php';
-	request.post(
-		{
-			url : url,
-			headers: {'content-type' : 'application/x-www-form-urlencoded'},
-			body: 'code=DesertBusDeLEspoir&don='+montant
-		},
-		function(error, response, body){
-			console.log(body);
-		}
-	);
-}
+// function mettreAJourCompteurSiteWeb(montant)
+// {
+// 		let url = 'http://loisirsnumeriques.org/desertbus/compteur/envoiDonPourMettreAJourCompteur.php';
+// 	request.post(
+// 		{
+// 			url : url,
+// 			headers: {'content-type' : 'application/x-www-form-urlencoded'},
+// 			body: 'code=DesertBusDeLEspoir&don='+montant
+// 		},
+// 		function(error, response, body){
+// 			console.log(body);
+// 		}
+// 	);
+// }
 
 const adresseSocket = "ws://localhost:8080/"
 const socket = new WebSocket(adresseSocket, "echo-protocol");
@@ -48,7 +48,7 @@ socket.addEventListener("open", function(event) {
 socket.addEventListener("message", function(event) {
 	let data = JSON.parse(event.data);
 	console.log(data);
-	if(!!data.tag)
+	if(data.tag)
 	{
 		let tag = data.tag;
 		console.log("Tag : "+tag);
@@ -61,20 +61,20 @@ socket.addEventListener("message", function(event) {
 	}
 });
 
-window.onload = function()
-{
-	let webview = document.getElementById('foo');
+// window.onload = function()
+// {
+// 	let webview = document.getElementById('foo');
 
-	webview.addEventListener('did-stop-loading', function(event) {
-		event.target.removeEventListener(event.type, arguments.callee);
-		console.log("event did-stop-loading");
-		webview.addEventListener('did-navigate', function(event, url) {
-			console.log("event did-navigate");
-			setInterval(function() {
-				console.log("Récupération du CSV");
-				let url = "";//Url CSV hello asso
-				webview.loadURL(url);
-			}, 15000);
-		});
-	})
-}
+// 	webview.addEventListener('did-stop-loading', function(event) {
+// 		event.target.removeEventListener(event.type, arguments.callee);
+// 		console.log("event did-stop-loading");
+// 		webview.addEventListener('did-navigate', function(event, url) {
+// 			console.log("event did-navigate");
+// 			setInterval(function() {
+// 				console.log("Récupération du CSV");
+// 				let url = "";//Url CSV hello asso
+// 				webview.loadURL(url);
+// 			}, 15000);
+// 		});
+// 	})
+// }
