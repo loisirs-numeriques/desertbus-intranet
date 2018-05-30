@@ -35,7 +35,7 @@ class DonCtrl
 	mettreDansIndex(don)
 	{
 		// console.log(don);
-		// console.log("Index : "+don.indexHeure);
+		console.log("Index : "+don.indexHeure);
 		let index = don.indexHeure;
 		if(this.dons[index] == undefined)
 		{
@@ -51,7 +51,7 @@ class DonCtrl
 		}
 		this.donsId[don.id] = index;
 
-		// console.log("Ajout dans l'index du don #"+don.id);
+		console.log("Ajout dans l'index du don #"+don.id);
 		// console.log(this.dons);
 	}
 
@@ -79,9 +79,7 @@ class DonCtrl
 		delete this.donsId[id];
 
 		console.log("Retrait de l'index #"+id);
-		console.log(don);
 		console.log("------------------------");
-		console.log(this.dons);
 	}
 
 	addDon(don)
