@@ -230,7 +230,11 @@ function recupererTwitch() {
 			}
 		},
 		function (error, response, body) {
-			var data = JSON.parse(body)
+			if (body == null || body[0] != '{') {
+				console.log("body", body);
+				return ;
+			} else
+				var data = JSON.parse(body)
 			if (data.stream != null)
 				twitchDesertbus = data.stream.viewers
 			majTwitch()
@@ -244,7 +248,11 @@ function recupererTwitch() {
 			}
 		},
 		function (error, response, body) {
-			var data = JSON.parse(body)
+			if (body == null || body[0] != '{') {
+				console.log("body", body);
+				return ;
+			} else
+				var data = JSON.parse(body)
 			if (data.stream != null)
 				twitchJvtv = data.stream.viewers
 			majTwitch()
@@ -290,8 +298,13 @@ function recupererDonsHelloAsso() {
 			}
 		},
 		function (error, response, body) {
-			let data = JSON.parse(body);
-			traiterHelloAsso(data);
+			if (body == null || body[0] != '{') {
+				console.log("body", body);
+				return ;
+			} else {
+				var data = JSON.parse(body);
+				traiterHelloAsso(data);
+			}
 
 			for (let i = 2; i <= data.pagination.max_page; i++) {
 				request({
@@ -301,7 +314,7 @@ function recupererDonsHelloAsso() {
 						}
 					},
 					function (error, response, body) {
-						if (body[0] != '{') {
+						if (body == null || body[0] != '{') {
 							console.log("body", body);
 							i--
 						} else {
@@ -392,7 +405,7 @@ webserver.on('request', function (request) {
 	connexion.on("message", function (event) {
 		// console.log(event);
 		let data = JSON.parse(event.utf8Data);
-		// console.log(data);
+		console.log(data);
 		if (!!data.tag) {
 			let tag = data.tag;
 			console.log("Tag : " + tag);

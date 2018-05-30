@@ -11,7 +11,8 @@ let etatCompteur = {bloque: false, vraieValeur: 0, valeurCourante: 0};
 function majTwitch(infos)
 {
 	let totalViewers = document.getElementById('totalViewers');
-	totalViewers.innerHTML = infos.desertbus + infos.jvtv;
+	if (infos.desertbus && infos.jvtv)
+		totalViewers.innerHTML = infos.desertbus + infos.jvtv;
 }
 
 function majDon(infos)
@@ -169,7 +170,7 @@ function listeDonMaj(liste)
 			let td;
 
 			td = document.createElement('td');
-			td.innerHTML = "#"+i;
+			td.innerHTML = "#"+item.id;
 			tr.appendChild(td);
 
 			td = document.createElement('td');
@@ -191,7 +192,7 @@ function listeDonMaj(liste)
 			td.innerHTML =
 				"<a onclick=\"listeDonInfos("+index+");\" style=\"cursor: pointer; text-decoration: underline\">Voir informations</a> - " +
 				"<a onclick=\"ajoutDonInitModif("+index+");\" style=\"cursor: pointer; text-decoration: underline\">Modifier</a> - " +
-				"<a onclick=\"supprimerDon("+index+");\" style=\"cursor: pointer; text-decoration: underline\">Supprimer</a>";
+				"<a onclick=\"supprimerDon("+item.id+");\" style=\"cursor: pointer; text-decoration: underline\">Supprimer</a>";
 			tr.appendChild(td);
 
 			table.appendChild(tr);
@@ -478,6 +479,7 @@ function listeDonInfos(index)
 		if(cle != 'cle')
 			text += cle+" : "+item.infos[cle]+"\n";
 	}
+	text += "id: " + item.id + "\n" 
 	alert(text);
 }
 

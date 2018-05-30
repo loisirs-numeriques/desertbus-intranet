@@ -12,7 +12,7 @@ document.body.appendChild(totalDonLigne);
 function majDon(totalDon)
 {
 	let totalDonLigne = document.getElementById('totalDonParagraphe');
-	if(!!totalDonLigne)
+	if(totalDonLigne)
 	{
 		totalDonLigne.innerHTML = "Total des dons actuels : " + totalDon.toLocaleString("fr-FR", { style: 'currency', currency: 'EUR' });
 		document.body.appendChild(totalDonLigne);
