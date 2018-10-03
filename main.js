@@ -232,7 +232,7 @@ function recupererTwitch() {
 		function (error, response, body) {
 			if (body == null || body[0] != '{') {
 				console.log("body", body);
-				return ;
+				return;
 			} else
 				var data = JSON.parse(body)
 			if (data.stream != null)
@@ -250,7 +250,7 @@ function recupererTwitch() {
 		function (error, response, body) {
 			if (body == null || body[0] != '{') {
 				console.log("body", body);
-				return ;
+				return;
 			} else
 				var data = JSON.parse(body)
 			if (data.stream != null)
@@ -264,7 +264,7 @@ function recupererTwitch() {
 // 	let auth = "Basic " + new Buffer(credentials.username + ":" + credentials.password).toString("base64");
 
 // 	request({
-// 		url: "https://api.helloasso.com/v3/campaigns/000000674924/actions.json?page=1&results_per_page=100",
+// 		url: "https://api.helloasso.com/v3/campaigns/"+campaigns_id+"/actions.json?page=1&results_per_page=100",
 // 		headers: {
 // 			"Authorization": auth
 // 		}
@@ -284,15 +284,11 @@ function recupererTwitch() {
 
 //Récupération des dons hello asso
 function recupererDonsHelloAsso() {
-	//let url = "https://api.helloasso.com/v2/reports.csv?from=2016-11-01T00:00:00&page=1&count=500";
-	// let url = "https://api.helloasso.com/v2/reports/fundraiser/desert-bus-de-l-espoir-2016-je-donne.csv?from=2016-11-01T00:00:00&page=1&count=5000";
 	let auth = "Basic " + new Buffer(credentials.username + ":" + credentials.password).toString("base64");
-	// console.log("auth", auth)
-
-	// let max_page = requestMaxPage()
+	let campaigns_id = credentials.campaigns_id
 
 	request({
-			url: "https://api.helloasso.com/v3/campaigns/000000674924/actions.json?page=1&results_per_page=100",
+			url: "https://api.helloasso.com/v3/campaigns/" + campaigns_id + "/actions.json?page=1&results_per_page=100",
 			headers: {
 				"Authorization": auth
 			}
@@ -300,7 +296,7 @@ function recupererDonsHelloAsso() {
 		function (error, response, body) {
 			if (body == null || body[0] != '{') {
 				console.log("body", body);
-				return ;
+				return;
 			} else {
 				var data = JSON.parse(body);
 				traiterHelloAsso(data);
@@ -308,7 +304,7 @@ function recupererDonsHelloAsso() {
 
 			for (let i = 2; i <= data.pagination.max_page; i++) {
 				request({
-						url: "https://api.helloasso.com/v3/campaigns/000000674924/actions.json?page=" + i + "&results_per_page=100",
+						url: "https://api.helloasso.com/v3/campaigns/" + campaigns_id + "/actions.json?page=" + i + "&results_per_page=100",
 						headers: {
 							"Authorization": auth
 						}
